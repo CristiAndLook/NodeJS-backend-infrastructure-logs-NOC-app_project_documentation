@@ -1,3 +1,9 @@
-const phrase: string = 'new NOC project';
+import { Server } from './presentation/server'
 
-console.log(phrase);
+(async () => {
+    main()
+})()
+
+function main() {
+    Server.start()
+}
