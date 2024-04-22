@@ -3,16 +3,25 @@ import { FileSystemDatasource } from "../infraestructure/datasources/file-system
 import { LogRepositoryImpl } from "../infraestructure/repositories/log.repository.impl"
 import { CronService } from "./cron/cron-service"
 import { EmailService } from "./email/email.service"
+import { SendEmailLogs } from "../domain/use-cases/emails/send-email-logs"
 
 const fileSystemLogRepository = new LogRepositoryImpl(
     new FileSystemDatasource(),
 )
 
+const emailService = new EmailService()
+
 export class Server {
     public static start() {
         console.log('Server started...')
 
-        // const emailService = new EmailService()
+        // new SendEmailLogs(
+        //     emailService,
+        //     fileSystemLogRepository,
+        // ).execute(
+        //     ['camira01@misena.edu.co']
+        // )
+
         // emailService.sendEmailWithFileSystemLogs(['camira01@misena.edu.co'])
 
         // CronService.createJob(
