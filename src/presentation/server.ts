@@ -5,10 +5,12 @@ import { LogRepositoryImpl } from "../infraestructure/repositories/log.repositor
 import { CronService } from "./cron/cron-service"
 import { EmailService } from "./email/email.service"
 import { SendEmailLogs } from "../domain/use-cases/emails/send-email-logs"
+import { PostgresLogDatasource } from "../infraestructure/datasources/postgres-log.datasource"
 
 const logRepository = new LogRepositoryImpl(
     // new FileSystemDatasource(),
-    new MongoLogDatasource()
+    // new MongoLogDatasource(),
+    new PostgresLogDatasource(),
 )
 
 const emailService = new EmailService()
